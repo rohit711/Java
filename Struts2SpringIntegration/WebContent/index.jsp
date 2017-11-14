@@ -1,0 +1,1 @@
+<META HTTP-EQUIV="Refresh" content="0;URL=helloWorld.action">
