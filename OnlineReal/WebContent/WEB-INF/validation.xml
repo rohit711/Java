@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+        "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+        
+ <form-validation>
+  <formset>
+         	<form name="agent">
+         		<field property="name" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+         	
+         	   <field property="password" depends="required,minlength,maxlength">
+         		<arg key="agent.password" position="0" resource="true"/>
+         		<arg key="agent.password.minlength" position="1" resource="true"/>
+         		<arg key="agent.password.maxlength" position="2" resource="true"/>
+         		
+         		<var>
+         			<var-name>minlength</var-name>
+                    <var-value>5</var-value>         		
+         		</var>
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		</field>
+         		
+         		
+         		<field property="address" depends="required,maxlength">
+         		<arg key="errors.required"/>
+         		<arg key="errors.maxlength"/>
+         		
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>70</var-value>         		
+         		</var>
+         		</field>
+         		<field property="country" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+         		
+         		
+        		<field property="city" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+ 
+            	<field property="locality" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+        	
+        		<field property="contactNo" depends="required,minlength,maxlength">
+         		
+         		<arg key="agent.contactNo" position="0" resource="true"/>
+         	
+         		<arg key="agent.contactNo.minlength" position="1" resource="true"/>
+         		<arg key="agent.contactNo.maxlength" position="2" resource="true"/>
+         		
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		<var>
+         			<var-name>minlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		
+         		
+         		</field>
+        			<field property="email" depends="required,email">
+         			<arg key="errors.required"/>
+         			<arg key="errors.email"/>
+         		
+         		</field>
+         		
+         	   
+    		</form>     
+         
+  
+         	<form name="individual">
+         		<field property="name" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+         	
+         	   <field property="password" depends="required,minlength,maxlength">
+         		<arg key="individual.password" position="0" resource="true"/>
+         		<arg key="individual.password.minlength" position="1" resource="true"/>
+         		<arg key="individual.password.maxlength" position="2" resource="true"/>
+         		
+         		<var>
+         			<var-name>minlength</var-name>
+                    <var-value>5</var-value>         		
+         		</var>
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>  		
+         		</field>
+         		
+         		<field property="country" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+         		
+         		
+        		<field property="city" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+ 
+            	
+        	
+        		<field property="contactNo" depends="required,minlength,maxlength">
+         		
+         		<arg key="individual.contactNo" position="0" resource="true"/>
+         	
+         		<arg key="individual.contactNo.minlength" position="1" resource="true"/>
+         		<arg key="individual.contactNo.maxlength" position="2" resource="true"/>
+         		
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		<var>
+         			<var-name>minlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		
+         		
+         		</field>
+        			<field property="email" depends="required,email">
+         			<arg key="errors.required"/>
+         			<arg key="errors.email"/>
+         		
+         		</field>
+         		
+         	   
+    </form>     
+        
+         
+                 	<form name="builder">
+         		<field property="name" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+         	
+         	   <field property="password" depends="required,minlength,maxlength">
+         		<arg key="builder.password" position="0" resource="true"/>
+         		<arg key="builder.password.minlength" position="1" resource="true"/>
+         		<arg key="builder.password.maxlength" position="2" resource="true"/>
+         		
+         		<var>
+         			<var-name>minlength</var-name>
+                    <var-value>5</var-value>         		
+         		</var>
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>  		
+         		</field>
+         		
+         		<field property="country" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+         		
+         		
+        		<field property="city" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+ 
+            	
+        	
+        		<field property="contactNo" depends="required,minlength,maxlength">
+         		
+         		<arg key="builder.contactNo" position="0" resource="true"/>
+         	
+         		<arg key="builder.contactNo.minlength" position="1" resource="true"/>
+         		<arg key="builder.contactNo.maxlength" position="2" resource="true"/>
+         		
+         		<var>
+         			<var-name>maxlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		<var>
+         			<var-name>minlength</var-name>
+                    <var-value>10</var-value>         		
+         		</var>
+         		
+         		
+         		</field>
+        			<field property="email" depends="required,email">
+         			<arg key="errors.required"/>
+         			<arg key="errors.email"/>
+         		
+         		</field>
+         		
+         	   
+    </form> 
+    <form name="search1">
+    
+    			<field property="propertyType" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+    
+    			<field property="city" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+ 
+            	<field property="transactionType" depends="required">
+         		<arg key="errors.required"/>
+         		</field>
+    
+    
+    </form>
+    <form name="login">
+    <field property="email" depends="required,email">
+    <arg key="errors.required"/>
+    <arg key="errors.email"/>
+    </field>
+    
+      <field property="password" depends="required">
+         		<arg key="errors.email"/>
+         		
+         		</field>
+         		
+    
+    </form>
+  </formset>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+         
+ </form-validation>

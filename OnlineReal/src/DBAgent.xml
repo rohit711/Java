@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+      
+      <class name="online.hibernate.AgentPojo" table="AgentDB">
+    <id name="email" column="email" type="java.lang.String"></id>
+    <property name="name" column="name" type="java.lang.String"></property>
+    <property name="address" column="address" type="java.lang.String"></property>
+    <property name="country" column="country" type="java.lang.String"></property>
+    <property name="city" column="city" type="java.lang.String"></property>
+    <property name="locality" column="locality" type="java.lang.String"></property>
+    <property name="website" column="website" type="java.lang.String"></property>
+    <property name="contactNo" column="contactNo" type="java.lang.Long"></property>
+    <property name="specialiseIn" column="specialiseIn" type="java.lang.String"></property>
+    <property name="password" column="password" type="java.lang.String"></property>
+    </class>
+    
+    
+    
+    <class name="online.hibernate.IndividualPojo" table="IndividualDB">
+    <id name="email" column="email" type="java.lang.String"></id>
+    <property name="name" column="name" type="java.lang.String"></property>
+    <property name="country" column="country" type="java.lang.String"></property>
+    <property name="city" column="city" type="java.lang.String"></property>
+    <property name="gender" column="gender" type="java.lang.String"></property>
+    <property name="contactNo" column="contactNo" type="java.lang.Long"></property>
+    <property name="password" column="password" type="java.lang.String"></property>
+    
+    </class>
+    
+    <class name="online.hibernate.BuilderPojo" table="builderDB">
+    <id name="email" column="email" type="java.lang.String"></id>
+    <property name="name" column="name" type="java.lang.String"></property>
+    <property name="address" column="address" type="java.lang.String"></property>
+    <property name="country" column="country" type="java.lang.String"></property>
+    <property name="city" column="city" type="java.lang.String"></property>
+    <property name="companyName" column="companyName" type="java.lang.String"></property>
+    <property name="website" column="website" type="java.lang.String"></property>
+    <property name="contactNo" column="contactNo" type="java.lang.Long"></property>
+    <property name="password" column="password" type="java.lang.String"></property>
+    
+    </class>
+    <class name="online.hibernate.Locality" table="LOCALL">
+    <id name="locality" column="locality" type="java.lang.String"></id>
+    <property name="city" column="city" type="java.lang.String"></property>
+    
+    </class>
+    
+    <class name="online.hibernate.PojoApp" table="apartment">
+     <id name="flatNo" column="flatNo" type="java.lang.String"></id>
+    <property name="apartmentName" column="apartmentName" type="java.lang.String"></property>
+    <property name="bhk" column="bhk" type="java.lang.Integer"></property>
+    <property name="cost" column="cost" type="java.lang.Integer"></property>
+    <property name="area" column="locality" type="java.lang.String"></property>
+    </class>
+    
+    <class name="online.hibernate.PojoOffice" table="office">
+    <composite-id>
+    <key-property name="locality" column="locality" type="java.lang.String"></key-property>
+    <key-property name="plotNo" column="plotNo" type="java.lang.String"></key-property>
+    </composite-id>
+    <property name="cost" column="cost" type="java.lang.Integer"></property>
+    <property name="area" column="area(sqft)" type="java.lang.String"></property>
+    </class>
+    
+    <class name="online.hibernate.PojoLand" table="land">
+    <composite-id>
+    <key-property name="locality" column="locality"></key-property>
+    <key-property name="plotNo" column="plotNo"></key-property>
+    </composite-id>
+    <property name="cost" column="cost" type="java.lang.Integer"></property>
+    <property name="area" column="area(sqft)" type="java.lang.String"></property>
+    </class>
+    
+    
+    <class name="online.hibernate.PojoFarmHouse" table="FarmHouse">
+    <composite-id>
+    <key-property name="locality" column="locality"></key-property>
+    <key-property name="plotNo" column="plotNo"></key-property>
+    </composite-id>
+    
+    <property name="cost" column="cost" type="java.lang.Integer"></property>
+    <property name="area" column="area(sqft)" type="java.lang.String"></property>
+    </class>
+    
+    <class name="online.hibernate.ShowroomPojo" table="showroom">
+    <composite-id >
+    <key-property name="locality" column="locality" ></key-property>
+    
+    <key-property name="plotNo" column="plotNo"></key-property>
+    </composite-id>
+    
+    <property name="cost" column="cost" type="java.lang.Integer" insert="true" update="true"></property>
+    <property name="area" column="area(sqft)" type="java.lang.String" insert="true" update="true"></property>
+    </class>
+    
+    <sql-query name="getLocality">
+    <return class="online.hibernate.Locality"/> select * from locall
+    </sql-query>
+    
+    
+   <sql-query name="getDetails">
+   <return class="online.hibernate.PojoApp"/>select * from apartment a where a.locality=:locality and a.cost between :minBudget and :maxBudget
+      
+  
+   </sql-query>
+   <sql-query name="getOfficeDetails">
+   <return class="online.hibernate.PojoOffice"/>select * from office o where o.locality=:locality and o.cost between :minBudget and :maxBudget
+      
+  
+   </sql-query>
+   
+   <sql-query name="getShowroomDetails">
+   <return class="online.hibernate.ShowroomPojo"/>select * from Showroom s where s.locality=:locality and s.cost between :minBudget and :maxBudget
+      
+  
+   </sql-query>
+   
+   
+    <sql-query name="getFarmHouseDetails">
+   <return class="online.hibernate.PojoFarmHouse"/>select * from FarmHouse s where s.locality=:locality and s.cost between :minBudget and :maxBudget
+      
+  
+   </sql-query>
+   
+   <sql-query name="getLandDetails">
+      <return class="online.hibernate.PojoLand"/>select * from Land l where l.locality=:locality and l.cost between :minBudget and :maxBudget
+    </sql-query>  
+    
+     <sql-query name="getAgentnames">
+    <return class="online.hibernate.AgentPojo"/> select * from Agentdb a 
+    </sql-query>
+    
+      <sql-query name="getBuildernames">
+    <return class="online.hibernate.BuilderPojo"/> select * from Builderdb b 
+    </sql-query>
+    
+    <sql-query name="getIndividualnames">
+    <return class="online.hibernate.IndividualPojo"/> select * from individualdb b 
+    </sql-query>
+    
+    
+     <sql-query name="getAgentDetails">
+    <return class="online.hibernate.AgentPojo"/> select * from Agentdb a where a.name=:name
+    </sql-query>
+    
+    
+     <sql-query name="getindividualDetails">
+    <return class="online.hibernate.IndividualPojo"/> select * from individualdb b  where b.name=:name
+    </sql-query>
+    
+     <sql-query name="getBuilderDetails">
+    <return class="online.hibernate.BuilderPojo"/> select * from Builderdb a where a.name=:name
+    </sql-query>
+  
+   <sql-query name="deleteAgentDetails"> delete from Agentdb a where a.email=:email
+    </sql-query>
+    
+    <sql-query name="deleteBuilderDetails"> delete from Builderdb a where a.email=:email
+    </sql-query>
+  
+   <sql-query name="deleteIndividualDetails"> delete from individualdb a where a.email=:email
+    </sql-query>
+    
+    </hibernate-mapping>
